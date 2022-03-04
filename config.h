@@ -67,6 +67,7 @@ static const char *backlight_up[] = { "backlight_control", "+5", NULL };
 static const char *backlight_down[] = { "backlight_control", "-5", NULL };
 static const char *volume_up[] = { "pactl", "set-sink-volume", "0", "+10%", NULL };
 static const char *volume_down[] = { "pactl", "set-sink-volume", "0", "-10%", NULL };
+static const char *volume_mute[] = { "pactl", "set-sink-volume", "0", "0%", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,6 +108,7 @@ static Key keys[] = {
     { 0,                       XF86XK_MonBrightnessDown,      spawn,          {.v = backlight_down } },
     { 0,                       XF86XK_AudioRaiseVolume,      spawn,          {.v = volume_up } },
     { 0,                       XF86XK_AudioLowerVolume,      spawn,          {.v = volume_down } },
+    { 0,                       XF86XK_AudioMute,            spawn,          {.v = volume_mute } },
 };
 
 /* button definitions */
