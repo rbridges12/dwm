@@ -2,10 +2,11 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
-static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const Gap default_gap        = {.isgap = 0, .realgap = 10, .gappx = 10};
+// static const int swallowfloating = 0;           /* 1 means swallow floating windows by default */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "fontawesome:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
@@ -17,10 +18,12 @@ static const char col_gray_mkai[]   = "#1b1d1e";
 static const char col_cyan[]        = "#005577";
 static const char col_gold[]        = "#ffaf24";
 static const char col_pink[]        = "#ff66a6";
+static const char col_blue_odp[] 	= "#61afef";
+static const char col_yellow_odp[] 	= "#e5c07b";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray_mkai, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_pink,  col_pink },
+	[SchemeSel]  = { col_gray4, col_gray2,  col_blue_odp },
 };
 
 /* tagging */
@@ -31,8 +34,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+ /* class     instance  title           tags mask  isf
+    loating  isterminal  noswallow  monitor */
+	{"Gimp", NULL, NULL, 0, 1, -1 }
+//  { "Gimp",    NULL,     NULL,           0,         1,  0,           0,        -1 },
+// { "Firefox", NULL,     NULL,           1 << 8,    0,0,          -1,        -1 },
+// { "St",      NULL,     NULL,           0,         0, 1,           0,        -1 },
+// { NULL,      NULL,     "Event Tester", 0,         0, 0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
