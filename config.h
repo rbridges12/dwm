@@ -16,14 +16,20 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_gray_mkai[]   = "#1b1d1e";
 static const char col_cyan[]        = "#005577";
-static const char col_gold[]        = "#ffaf24";
-static const char col_pink[]        = "#ff66a6";
 static const char col_blue_odp[] 	= "#61afef";
 static const char col_yellow_odp[] 	= "#e5c07b";
+static const char col_purple_odp[]  = "#c678dd";
+static const char col_deep_purple[] = "#070459";
+static const char col_cyan_odp[]    = "#56b6c2";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray_mkai, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_gray2,  col_blue_odp },
+	[SchemeStatus]  = { col_gray3, col_deep_purple,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_gray4, col_purple_odp,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    [SchemeTagsNorm]  = { col_gray3, col_deep_purple,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    [SchemeInfoSel]  = { col_gray4, col_deep_purple,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    [SchemeInfoNorm]  = { col_gray3, col_deep_purple,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -70,13 +76,15 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_pink, "-sf", col_gray_mkai, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_deep_purple, "-nf", col_deep_purple, "-sb", col_purple_odp, "-sf", col_deep_purple, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *backlight_up[] = { "backlight_control", "+5", NULL };
 static const char *backlight_down[] = { "backlight_control", "-5", NULL };
 static const char *volume_up[] = { "pulsemixer", "--change-volume", "+10", NULL };
 static const char *volume_down[] = { "pulsemixer", "--change-volume", "-10", NULL };
 static const char *volume_mute[] = { "pulsemixer", "--set-volume", "0", NULL };
+static const char *suspend[] = { "systemctl", "suspend", NULL };
+static const char *screenshot[] = { "fireshot", "gui", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -123,6 +131,8 @@ static Key keys[] = {
     { 0,                       XF86XK_AudioRaiseVolume,      spawn,          {.v = volume_up } },
     { 0,                       XF86XK_AudioLowerVolume,      spawn,          {.v = volume_down } },
     { 0,                       XF86XK_AudioMute,            spawn,          {.v = volume_mute } },
+    { MODKEY|ShiftMask,             XK_l,                   spawn,          {.v = suspend } },
+    { MODKEY|ShiftMask,             XK_s,                   spawn,          {.v = screenshot } },
 };
 
 /* button definitions */
