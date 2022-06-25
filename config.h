@@ -19,7 +19,8 @@ static const char col_cyan[]        = "#005577";
 static const char col_blue_odp[] 	= "#61afef";
 static const char col_yellow_odp[] 	= "#e5c07b";
 static const char col_purple_odp[]  = "#c678dd";
-static const char col_deep_purple[] = "#070459";
+//static const char col_deep_purple[] = "#070459";
+static const char col_deep_purple[] = "#201059";
 static const char col_cyan_odp[]    = "#56b6c2";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
