@@ -6,7 +6,7 @@ static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const Gap default_gap        = {.isgap = 0, .realgap = 10, .gappx = 10};
 // static const int swallowfloating = 0;           /* 1 means swallow floating windows by default */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "fontawesome:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
@@ -22,10 +22,11 @@ static const char col_purple_odp[]  = "#c678dd";
 //static const char col_deep_purple[] = "#070459";
 static const char col_deep_purple[] = "#201059";
 static const char col_cyan_odp[]    = "#56b6c2";
+static const char col_med_purple[]  = "#f2baf7";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray_mkai, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_gray2,  col_blue_odp },
+	[SchemeSel]  = { col_gray4, col_gray2,  col_med_purple },
 	[SchemeStatus]  = { col_gray3, col_deep_purple,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
 	[SchemeTagsSel]  = { col_gray4, col_purple_odp,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
     [SchemeTagsNorm]  = { col_gray3, col_deep_purple,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
